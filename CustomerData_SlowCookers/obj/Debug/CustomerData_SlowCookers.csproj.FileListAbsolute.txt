@@ -1,0 +1,20 @@
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\bin\Debug\CustomerData_SlowCookers.exe.config
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\bin\Debug\CustomerData_SlowCookers.exe
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\bin\Debug\CustomerData_SlowCookers.pdb
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.csprojResolveAssemblyReference.cache
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.Main.resources
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.Properties.Resources.resources
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.csproj.GenerateResource.Cache
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.exe
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.pdb
+c:\users\juerg\documents\visual studio 2017\Projects\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.FormAdd_Edit.resources
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\bin\Debug\CustomerData_SlowCookers.exe.config
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\bin\Debug\CustomerData_SlowCookers.exe
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\bin\Debug\CustomerData_SlowCookers.pdb
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.csprojResolveAssemblyReference.cache
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.FormAdd_Edit.resources
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.Main.resources
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.Properties.Resources.resources
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.csproj.GenerateResource.Cache
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.exe
+D:\Dropbox\Mein Studium - AT\2. Semester\SWE2\CustomerData_SlowCookers\CustomerData_SlowCookers\obj\Debug\CustomerData_SlowCookers.pdb
