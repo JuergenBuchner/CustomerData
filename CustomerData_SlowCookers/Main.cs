@@ -14,8 +14,8 @@ namespace CustomerData_SlowCookers
     public partial class Main : Form
     {
         List<Customer> listCustomerAll = new List<Customer>();
-        List<Customer> listCustomerFiltered = new List<Customer>();
-        List<Customer> listCustomerFilteredOld = new List<Customer>();
+        List<int> listCustomerFiltered = new List<int>();
+        List<int> listCustomerFilteredOld = new List<int>();
         bool[] sortedBoolArray;
         public Main()
         {
@@ -28,7 +28,10 @@ namespace CustomerData_SlowCookers
             listCustomerAll.Add(new Customer("Bernd", "Harrer", "zorro@gmail.com", 50));
             listCustomerAll.Add(new Customer("Arnold", "Mair", "M.Arnold@gmail.com", 30));
             /////////////////////////////////////////////////////////////////////////////////
-            listCustomerFiltered = listCustomerAll;
+            foreach (Customer cust1 in listCustomerAll)
+            {
+                listCustomerFiltered.Add(cust1.ID);
+            }
             listCustomerFilteredOld = listCustomerFiltered;
             sortedBoolArray = new bool[] { false, false, false, false, false };
             UpdateDataGridView();
@@ -37,9 +40,12 @@ namespace CustomerData_SlowCookers
         private void UpdateDataGridView()
         {
             customerBindingSource1.Clear();
-            foreach ( Customer item in listCustomerFiltered)
+            foreach ( Customer item in listCustomerAll)
             {
-                customerBindingSource1.Add(item);
+                if(listCustomerFiltered.Contains(item.ID))
+                {
+                    customerBindingSource1.Add(item);
+                }               
             }
         }
 
@@ -123,7 +129,7 @@ namespace CustomerData_SlowCookers
 
         private void btnShowFilteredList_Click(object sender, EventArgs e)
         {
-            listCustomerFiltered = new List<Customer>();
+            listCustomerFiltered = new List<int>();
             String stringFilter = txtBxFilterBy.Text;
             if(stringFilter != "")
             {
@@ -134,7 +140,7 @@ namespace CustomerData_SlowCookers
                         {
                             if (cust1.FirstName.Contains(stringFilter))
                             {
-                                listCustomerFiltered.Add(cust1);
+                                listCustomerFiltered.Add(cust1.ID);
                             }
                         }
                         break;
@@ -143,7 +149,7 @@ namespace CustomerData_SlowCookers
                         {
                             if (cust1.LastName.Contains(stringFilter))
                             {
-                                listCustomerFiltered.Add(cust1);
+                                listCustomerFiltered.Add(cust1.ID);
                             }
                         }
                         break;
@@ -151,7 +157,10 @@ namespace CustomerData_SlowCookers
             }
             else
             {
-                listCustomerFiltered = listCustomerAll;
+                foreach (Customer cust1 in listCustomerAll)
+                {
+                    listCustomerFiltered.Add(cust1.ID);
+                }
             }
 
             if (cBoxFilterBy.SelectedIndex == 1)
@@ -170,60 +179,60 @@ namespace CustomerData_SlowCookers
                 case 0:
                     if (sortedBoolArray[0] == false) // If list is already sorted ascending by ID, the list will be sorted descending 
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderBy(o => o.ID).ToList(); // Sorting the list ascending by ID
+                        listCustomerAll = listCustomerAll.OrderBy(o => o.ID).ToList(); // Sorting the list ascending by ID
                         sortedBoolArray = new bool[] { true, false, false, false, false }; // setting that the list is sorted ascending by ID
                     }
                     else
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderByDescending(o => o.ID).ToList(); // Sorting the list descending by ID
+                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.ID).ToList(); // Sorting the list descending by ID
                         sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is not sorted ascending in any way (in this case sorted descending by ID)
                     }
                     break;
                 case 1:
                     if (sortedBoolArray[1] == false) // If list is already sorted ascending by Balance, the list will be sorted descending 
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderBy(o => o.Balance).ToList(); // Sorting the list ascending by Balance
+                        listCustomerAll = listCustomerAll.OrderBy(o => o.Balance).ToList(); // Sorting the list ascending by Balance
                         sortedBoolArray = new bool[] { false, true, false, false, false }; // setting that the list is sorted ascending by Balance
                     }
                     else
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderByDescending(o => o.Balance).ToList(); // Sorting the list descending by Balance
+                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.Balance).ToList(); // Sorting the list descending by Balance
                         sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is not sorted ascending in any way (in this case sorted descending by Balance)
                     }
                     break;
                 case 2:
                     if (sortedBoolArray[2] == false)
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderBy(o => o.FirstName).ToList();
+                        listCustomerAll = listCustomerAll.OrderBy(o => o.FirstName).ToList();
                         sortedBoolArray = new bool[] { false, false, true, false, false };
                     }
                     else
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderByDescending(o => o.FirstName).ToList();
+                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.FirstName).ToList();
                         sortedBoolArray = new bool[] { false, false, false, false, false };
                     }
                     break;
                 case 3:
                     if (sortedBoolArray[3] == false)
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderBy(o => o.LastName).ToList();
+                        listCustomerAll = listCustomerAll.OrderBy(o => o.LastName).ToList();
                         sortedBoolArray = new bool[] { false, false, false, true, false };
                     }
                     else
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderByDescending(o => o.LastName).ToList();
+                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.LastName).ToList();
                         sortedBoolArray = new bool[] { false, false, false, false, false };
                     }
                     break;
                 case 4:
                     if (sortedBoolArray[4] == false)
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderBy(o => o.eMail).ToList();
+                        listCustomerAll = listCustomerAll.OrderBy(o => o.eMail).ToList();
                         sortedBoolArray = new bool[] { false, false, false, false, true };
                     }
                     else
                     {
-                        listCustomerFiltered = listCustomerFiltered.OrderByDescending(o => o.eMail).ToList();
+                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.eMail).ToList();
                         sortedBoolArray = new bool[] { false, false, false, false, false };
                     }
                     break;
