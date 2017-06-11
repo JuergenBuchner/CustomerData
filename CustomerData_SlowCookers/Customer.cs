@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CustomerData_SlowCookers
 {
-    class Customer
+    public class Customer
     {
-        static int idCount = 1;
+        public static int idCount = 1;
         #region Constructor
         public Customer(string firstName, string lastName, string email, decimal balance)
         {

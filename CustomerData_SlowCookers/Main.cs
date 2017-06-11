@@ -129,27 +129,38 @@ namespace CustomerData_SlowCookers
 
         private void btnShowFilteredList_Click(object sender, EventArgs e)
         {
-            listCustomerFiltered = new List<int>();
+            string filterBy = cBoxFilterBy.Text;
             String stringFilter = txtBxFilterBy.Text;
-            if(stringFilter != "")
+            listCustomerFiltered = CreateFilteredIDList(listCustomerAll, stringFilter, filterBy);
+            // Update Filtered List -> Show
+            // If txtBxFilterBy.Text is null -> Show All entries of the list
+            UpdateDataGridView();
+        }
+
+        public static List<int> CreateFilteredIDList(List<Customer> list, string stringFilter, string filterBy)
+        {
+
+            List<int> IDListFiltCustomer = new List<int>();
+            
+            if (stringFilter != "")
             {
-                switch (cBoxFilterBy.SelectedIndex)
+                switch (filterBy)
                 {
-                    case 0:
-                        foreach (Customer cust1 in listCustomerAll)
+                    case "First Name":
+                        foreach (Customer cust1 in list)
                         {
                             if (cust1.FirstName.Contains(stringFilter))
                             {
-                                listCustomerFiltered.Add(cust1.ID);
+                                IDListFiltCustomer.Add(cust1.ID);
                             }
                         }
                         break;
-                    case 1:
-                        foreach (Customer cust1 in listCustomerAll)
+                    case "Last Name":
+                        foreach (Customer cust1 in list)
                         {
                             if (cust1.LastName.Contains(stringFilter))
                             {
-                                listCustomerFiltered.Add(cust1.ID);
+                                IDListFiltCustomer.Add(cust1.ID);
                             }
                         }
                         break;
@@ -157,19 +168,13 @@ namespace CustomerData_SlowCookers
             }
             else
             {
-                foreach (Customer cust1 in listCustomerAll)
+                foreach (Customer cust1 in list)
                 {
-                    listCustomerFiltered.Add(cust1.ID);
+                    IDListFiltCustomer.Add(cust1.ID);
                 }
             }
 
-            if (cBoxFilterBy.SelectedIndex == 1)
-            {
-
-            }
-            // Update Filtered List -> Show
-            // If txtBxFilterBy.Text is null -> Show All entries of the list
-            UpdateDataGridView();
+            return IDListFiltCustomer;
         }
 
         private void dataGViewFiltered_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
