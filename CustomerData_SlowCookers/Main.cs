@@ -179,69 +179,20 @@ namespace CustomerData_SlowCookers
 
         private void dataGViewFiltered_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            switch (e.ColumnIndex)
+            string[] customerProperties = new string[] { "ID", "Balance", "FirstName", "LastName", "eMail" };
+
+            if (sortedBoolArray[e.ColumnIndex] == false) // If list is already sorted ascending by ID, the list will be sorted descending 
             {
-                case 0:
-                    if (sortedBoolArray[0] == false) // If list is already sorted ascending by ID, the list will be sorted descending 
-                    {
-                        listCustomerAll = listCustomerAll.OrderBy(o => o.ID).ToList(); // Sorting the list ascending by ID
-                        sortedBoolArray = new bool[] { true, false, false, false, false }; // setting that the list is sorted ascending by ID
-                    }
-                    else
-                    {
-                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.ID).ToList(); // Sorting the list descending by ID
-                        sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is not sorted ascending in any way (in this case sorted descending by ID)
-                    }
-                    break;
-                case 1:
-                    if (sortedBoolArray[1] == false) // If list is already sorted ascending by Balance, the list will be sorted descending 
-                    {
-                        listCustomerAll = listCustomerAll.OrderBy(o => o.Balance).ToList(); // Sorting the list ascending by Balance
-                        sortedBoolArray = new bool[] { false, true, false, false, false }; // setting that the list is sorted ascending by Balance
-                    }
-                    else
-                    {
-                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.Balance).ToList(); // Sorting the list descending by Balance
-                        sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is not sorted ascending in any way (in this case sorted descending by Balance)
-                    }
-                    break;
-                case 2:
-                    if (sortedBoolArray[2] == false)
-                    {
-                        listCustomerAll = listCustomerAll.OrderBy(o => o.FirstName).ToList();
-                        sortedBoolArray = new bool[] { false, false, true, false, false };
-                    }
-                    else
-                    {
-                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.FirstName).ToList();
-                        sortedBoolArray = new bool[] { false, false, false, false, false };
-                    }
-                    break;
-                case 3:
-                    if (sortedBoolArray[3] == false)
-                    {
-                        listCustomerAll = listCustomerAll.OrderBy(o => o.LastName).ToList();
-                        sortedBoolArray = new bool[] { false, false, false, true, false };
-                    }
-                    else
-                    {
-                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.LastName).ToList();
-                        sortedBoolArray = new bool[] { false, false, false, false, false };
-                    }
-                    break;
-                case 4:
-                    if (sortedBoolArray[4] == false)
-                    {
-                        listCustomerAll = listCustomerAll.OrderBy(o => o.eMail).ToList();
-                        sortedBoolArray = new bool[] { false, false, false, false, true };
-                    }
-                    else
-                    {
-                        listCustomerAll = listCustomerAll.OrderByDescending(o => o.eMail).ToList();
-                        sortedBoolArray = new bool[] { false, false, false, false, false };
-                    }
-                    break;
+                listCustomerAll = listCustomerAll.OrderBy(o => typeof(Customer).GetProperty(customerProperties[e.ColumnIndex]).GetValue(o, null)).ToList(); // Sorting the list ascending by ID
+                sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is sorted ascending by ID
+                sortedBoolArray[e.ColumnIndex] = true;
             }
+            else
+            {
+                listCustomerAll = listCustomerAll.OrderByDescending(o => typeof(Customer).GetProperty(customerProperties[e.ColumnIndex]).GetValue(o, null)).ToList(); // Sorting the list descending by ID
+                sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is not sorted ascending in any way (in this case sorted descending by ID)
+            }
+
             UpdateDataGridView();
         }
     }
