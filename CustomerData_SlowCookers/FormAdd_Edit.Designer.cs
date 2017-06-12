@@ -260,8 +260,7 @@ namespace CustomerData_SlowCookers
         {
             return txtBoxAddMoney.Value;
 }
-
-        private NumericUpDown txtBoxBalance;
-        private NumericUpDown txtBoxAddMoney;
+        public NumericUpDown txtBoxAddMoney;
+        public NumericUpDown txtBoxBalance;
     }
 }
