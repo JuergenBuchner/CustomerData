@@ -36,11 +36,16 @@ namespace CustomerData_SlowCookers
             }
 
             // E-Mail Check
-            bool eMailOK = true; // CHRISSI Part: Needs to be changed to a eMail Check
-            if (!eMailOK)
+            if (eMailOK(txtBoxEMail.Text.ToString()))
+            {
+                //Nothing to do here
+            }
+            else
             {
                 errorCount += 1;
+                MessageBox.Show("The Email address only allows characters, numbers and this special symbols(!#$%&'*+-/=?^_`{|}~) in front of the @ sign, after the @ sign characters, numbers and special symbols are allowed. A dot is allowed after the @ sign and one char.");
             }
+
 
             if (errorCount <= 0)
             {
@@ -62,6 +67,19 @@ namespace CustomerData_SlowCookers
             {
                 return true;
             }
+        private bool eMailOK(String email)
+        {
+            string pattern = @"[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+@{1}[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+[\.]?[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+[\.]{1}[a-z,A-Z]{2,4}";
+
+            Regex rgx = new Regex(pattern);
+            MatchCollection matches = rgx.Matches(email);
+            if (matches.Count > 0)
+            {
+                return true;
+            }
+            return false;
+
+
         }
     }
 }
