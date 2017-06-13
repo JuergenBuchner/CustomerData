@@ -13,16 +13,19 @@ namespace CustomerData_SlowCookers
 {
     public partial class FormAdd_Edit : Form
     {
-        public FormAdd_Edit()
+        private List<Customer> listCustomerAll;
+
+        public FormAdd_Edit(List<Customer> list)
         {
             InitializeComponent();
+            listCustomerAll = list;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             int errorCount = 0;
             // Check First Name
-            if(!checkName(txtBoxFirstName.Text))
+            if (!checkName(txtBoxFirstName.Text))
             {
                 errorCount += 1;
                 MessageBox.Show("The First Name only allows characters, the first needs to be big, the others small. Lenght needs to be at least 2", "First Name Issue");
@@ -38,7 +41,20 @@ namespace CustomerData_SlowCookers
             // E-Mail Check
             if (eMailOK(txtBoxEMail.Text.ToString()))
             {
-                //Nothing to do here
+                int id = 0;
+                if(getID() != "-")
+                {
+                    id = Int32.Parse(getID());
+                }
+                if (checkEmailUnique(listCustomerAll, getEMail(), id))
+                {
+                    
+                }
+                else
+                {
+                    errorCount += 1;
+                    MessageBox.Show("Email is already used.");
+                }
             }
             else
             {
@@ -67,6 +83,7 @@ namespace CustomerData_SlowCookers
             {
                 return true;
             }
+        }
         private bool eMailOK(String email)
         {
             string pattern = @"[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+@{1}[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+[\.]?[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+[\.]{1}[a-z,A-Z]{2,4}";
@@ -81,5 +98,30 @@ namespace CustomerData_SlowCookers
 
 
         }
+
+        private bool checkEmailUnique(List<Customer> liste, String email, int row)
+        {
+            int count = 0;
+            foreach (var l in liste)
+            {
+                if (!(l.eMail.Equals(email)))
+                {
+                    count++;
+                }
+                else
+                {
+                    if (l.eMail.Equals(email) && l.ID.Equals(row))
+                    {
+                        return true;
+                    }
+                }
+            }
+            if (count == liste.Count)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

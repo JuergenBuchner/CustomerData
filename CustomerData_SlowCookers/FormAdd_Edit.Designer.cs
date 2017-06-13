@@ -43,6 +43,8 @@ namespace CustomerData_SlowCookers
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtBoxBalance = new System.Windows.Forms.NumericUpDown();
             this.txtBoxAddMoney = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBoxID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxBalance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBoxAddMoney)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +52,7 @@ namespace CustomerData_SlowCookers
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 15);
+            this.label1.Location = new System.Drawing.Point(19, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
@@ -58,14 +60,14 @@ namespace CustomerData_SlowCookers
             // 
             // txtBoxFirstName
             // 
-            this.txtBoxFirstName.Location = new System.Drawing.Point(92, 12);
+            this.txtBoxFirstName.Location = new System.Drawing.Point(92, 40);
             this.txtBoxFirstName.Name = "txtBoxFirstName";
             this.txtBoxFirstName.Size = new System.Drawing.Size(168, 20);
             this.txtBoxFirstName.TabIndex = 1;
             // 
             // txtBoxLastName
             // 
-            this.txtBoxLastName.Location = new System.Drawing.Point(92, 38);
+            this.txtBoxLastName.Location = new System.Drawing.Point(92, 66);
             this.txtBoxLastName.Name = "txtBoxLastName";
             this.txtBoxLastName.Size = new System.Drawing.Size(168, 20);
             this.txtBoxLastName.TabIndex = 3;
@@ -73,7 +75,7 @@ namespace CustomerData_SlowCookers
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 41);
+            this.label2.Location = new System.Drawing.Point(19, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 2;
@@ -81,7 +83,7 @@ namespace CustomerData_SlowCookers
             // 
             // txtBoxEMail
             // 
-            this.txtBoxEMail.Location = new System.Drawing.Point(92, 64);
+            this.txtBoxEMail.Location = new System.Drawing.Point(92, 92);
             this.txtBoxEMail.Name = "txtBoxEMail";
             this.txtBoxEMail.Size = new System.Drawing.Size(168, 20);
             this.txtBoxEMail.TabIndex = 5;
@@ -89,7 +91,7 @@ namespace CustomerData_SlowCookers
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 67);
+            this.label3.Location = new System.Drawing.Point(19, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 4;
@@ -98,7 +100,7 @@ namespace CustomerData_SlowCookers
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 93);
+            this.label4.Location = new System.Drawing.Point(19, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 6;
@@ -107,7 +109,7 @@ namespace CustomerData_SlowCookers
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 119);
+            this.label5.Location = new System.Drawing.Point(19, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 8;
@@ -115,7 +117,7 @@ namespace CustomerData_SlowCookers
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(92, 142);
+            this.btnOK.Location = new System.Drawing.Point(92, 170);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 10;
@@ -126,7 +128,7 @@ namespace CustomerData_SlowCookers
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(185, 142);
+            this.btnCancel.Location = new System.Drawing.Point(185, 170);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 11;
@@ -135,7 +137,7 @@ namespace CustomerData_SlowCookers
             // 
             // txtBoxBalance
             // 
-            this.txtBoxBalance.Location = new System.Drawing.Point(92, 91);
+            this.txtBoxBalance.Location = new System.Drawing.Point(92, 119);
             this.txtBoxBalance.Maximum = new decimal(new int[] {
             1316134912,
             2328,
@@ -152,7 +154,7 @@ namespace CustomerData_SlowCookers
             // 
             // txtBoxAddMoney
             // 
-            this.txtBoxAddMoney.Location = new System.Drawing.Point(92, 117);
+            this.txtBoxAddMoney.Location = new System.Drawing.Point(92, 145);
             this.txtBoxAddMoney.Maximum = new decimal(new int[] {
             1316134912,
             2328,
@@ -167,13 +169,34 @@ namespace CustomerData_SlowCookers
             this.txtBoxAddMoney.Size = new System.Drawing.Size(168, 20);
             this.txtBoxAddMoney.TabIndex = 13;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(18, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "ID";
+            // 
+            // txtBoxID
+            // 
+            this.txtBoxID.Location = new System.Drawing.Point(92, 14);
+            this.txtBoxID.Name = "txtBoxID";
+            this.txtBoxID.ReadOnly = true;
+            this.txtBoxID.Size = new System.Drawing.Size(168, 20);
+            this.txtBoxID.TabIndex = 15;
+            this.txtBoxID.Text = "-";
+            this.txtBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // FormAdd_Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(272, 174);
+            this.ClientSize = new System.Drawing.Size(272, 202);
             this.ControlBox = false;
+            this.Controls.Add(this.txtBoxID);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBoxAddMoney);
             this.Controls.Add(this.txtBoxBalance);
             this.Controls.Add(this.btnCancel);
@@ -228,6 +251,14 @@ namespace CustomerData_SlowCookers
         {
             return txtBoxFirstName.Text;
         }
+        public string getID()
+        {
+            return txtBoxID.Text;
+        }
+        public void setID(int ID)
+        {
+            txtBoxID.Text = ID.ToString();
+        }
         public void setFirstName(string firstName)
         {
             txtBoxFirstName.Text = firstName;
@@ -262,5 +293,7 @@ namespace CustomerData_SlowCookers
 }
         public NumericUpDown txtBoxAddMoney;
         public NumericUpDown txtBoxBalance;
+        private Label label6;
+        private TextBox txtBoxID;
     }
 }

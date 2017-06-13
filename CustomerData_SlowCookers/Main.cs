@@ -575,35 +575,17 @@ namespace CustomerData_SlowCookers
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            FormAdd_Edit form1 = new FormAdd_Edit();
+            FormAdd_Edit form1 = new FormAdd_Edit(listCustomerAll);
             //form1.setAddMoneyReadOnly();
             form1.txtBoxAddMoney.Enabled = false;
 
             form1.setTitle("Add");
-            bool checkOK = false;
-            while (checkOK == false)
+            if (form1.ShowDialog() == DialogResult.OK)
             {
-                if (form1.ShowDialog() == DialogResult.OK)
-                {
-                    if (checkEntry(listCustomerAll, form1.getEMail(), dataGViewFiltered.RowCount))
-                    {
-                        listCustomerAll.Add(new Customer(form1.getFirstName(), form1.getLastName(), form1.getEMail(), form1.getBalance()));
-                        UpdateDataGridView();
-                        checkOK = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Email is already used.");
-                        checkOK = false;
-                    }
-                }
-                if (form1.ShowDialog() == DialogResult.Cancel)
-                {
-                    checkOK = true;
-                }
+                listCustomerAll.Add(new Customer(form1.getFirstName(), form1.getLastName(), form1.getEMail(), form1.getBalance()));
+                UpdateDataGridView();
+                writeCSV(listCustomerAll);
             }
-            writeCSV(listCustomerAll);
-
         }
 
 
@@ -635,74 +617,35 @@ namespace CustomerData_SlowCookers
         }
 
 
-        private bool checkEntry(List<Customer> liste, String email, int row)
-        {
-            int count = 0;
-            foreach (var l in liste)
-            {
-                if (!(l.eMail.Equals(email)))
-                {
-                    count++;
-                }
-                else
-                {
-                    if (l.eMail.Equals(email) && l.ID.Equals(row))
-                    {
-                        return true;
-                    }
-                }
-            }
-            if (count == liste.Count)
-            {
-                return true;
-            }
-            return false;
-        }
-
 
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
             if (dataGViewFiltered.SelectedRows.Count > 0)
             {
-                FormAdd_Edit form1 = new FormAdd_Edit();
+                FormAdd_Edit form1 = new FormAdd_Edit(listCustomerAll);
                 //form1.setBalanceReadOnly();
                 form1.txtBoxBalance.Enabled = false;
                 form1.setFirstNameReadOnly();
 
                 // Import Data of selected Customer
                 Customer cust1 = (Customer)dataGViewFiltered.SelectedRows[0].DataBoundItem;
+                form1.setID(cust1.ID);
                 form1.setFirstName(cust1.FirstName);
                 form1.setLastName(cust1.LastName);
                 form1.setEMail(cust1.eMail);
                 form1.setBalance(cust1.Balance);
 
                 form1.setTitle("Edit");
-                bool checkOK = false;
-                while (checkOK == false)
+                if (form1.ShowDialog() == DialogResult.OK)
                 {
-                    if (form1.ShowDialog() == DialogResult.OK)
-                    {
-                        if (checkEntry(listCustomerAll, form1.getEMail(), cust1.ID))
-                        {
-                            cust1.FirstName = form1.getFirstName();
-                            cust1.LastName = form1.getLastName();
-                            cust1.eMail = form1.getEMail();
-                            cust1.addMoney(form1.getAddMoney());
-                            UpdateDataGridView();
-                            checkOK = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Email is already used.");
-                            checkOK = false;
-                        }
-                    }
-                    if (form1.ShowDialog() == DialogResult.Cancel)
-                    {
-                        checkOK = true;
-                    }
+                    cust1.FirstName = form1.getFirstName();
+                    cust1.LastName = form1.getLastName();
+                    cust1.eMail = form1.getEMail();
+                    cust1.addMoney(form1.getAddMoney());
+                    UpdateDataGridView();
+                    writeCSV(listCustomerAll);
                 }
-                writeCSV(listCustomerAll);
+                
             }
             else
             {
