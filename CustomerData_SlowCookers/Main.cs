@@ -24,8 +24,8 @@ namespace CustomerData_SlowCookers
             cBoxFilterBy.Items.Add("Last Name");
             cBoxFilterBy.SelectedIndex = 0;
             ///////////////////////// CHRISSI : FOR TESTING ////////////////////////////////
-            listCustomerAll.Add(new Customer("Jürgen", "Buchner", "juergenB@gmail.com", 20));
-            listCustomerAll.Add(new Customer("Bernd", "Harrer", "zorro@gmail.com", 50));
+            listCustomerAll.Add(new Customer("Jürgen", "Buchner", "juergenBgmail.com", 20));
+            listCustomerAll.Add(new Customer("bernd", "Harrer", "zorro@gmail.com", 50));
             listCustomerAll.Add(new Customer("Arnold", "Mair", "M.Arnold@gmail.com", 30));
             /////////////////////////////////////////////////////////////////////////////////
             foreach (Customer cust1 in listCustomerAll)
@@ -171,92 +171,7 @@ namespace CustomerData_SlowCookers
                 j++;
 
                 int caseSwitch = rand.Next(27);
-
-                switch (caseSwitch)
-                {
-                    case 1:
-                        resultbal[i] = 'a';
-                        break;
-                    case 2:
-                        resultbal[i] = 'b';
-                        break;
-                    case 3:
-                        resultbal[i] = 'c';
-                        break;
-                    case 4:
-                        resultbal[i] = 'd';
-                        break;
-                    case 5:
-                        resultbal[i] = 'e';
-                        break;
-                    case 6:
-                        resultbal[i] = 'f';
-                        break;
-                    case 7:
-                        resultbal[i] = 'g';
-                        break;
-                    case 8:
-                        resultbal[i] = 'h';
-                        break;
-                    case 9:
-                        resultbal[i] = 'i';
-                        break;
-                    case 10:
-                        resultbal[i] = 'j';
-                        break;
-                    case 11:
-                        resultbal[i] = 'k';
-                        break;
-                    case 12:
-                        resultbal[i] = 'l';
-                        break;
-                    case 13:
-                        resultbal[i] = 'm';
-                        break;
-                    case 14:
-                        resultbal[i] = 'n';
-                        break;
-                    case 15:
-                        resultbal[i] = 'o';
-                        break;
-                    case 16:
-                        resultbal[i] = 'p';
-                        break;
-                    case 17:
-                        resultbal[i] = 'q';
-                        break;
-                    case 18:
-                        resultbal[i] = 'r';
-                        break;
-                    case 19:
-                        resultbal[i] = 's';
-                        break;
-                    case 21:
-                        resultbal[i] = 't';
-                        break;
-                    case 22:
-                        resultbal[i] = 'u';
-                        break;
-                    case 23:
-                        resultbal[i] = 'v';
-                        break;
-                    case 24:
-                        resultbal[i] = 'w';
-                        break;
-                    case 25:
-                        resultbal[i] = 'x';
-                        break;
-                    case 26:
-                        resultbal[i] = 'y';
-                        break;
-                    case 27:
-                        resultbal[i] = 'z';
-                        break;
-                    default:
-                        resultbal[i] = 'A';
-                        break;
-                }
-                i++;
+                resultbal[i] = Convert.ToChar('a' + caseSwitch - 1);
             }
 
             var first = firstName.ToCharArray();
@@ -272,91 +187,7 @@ namespace CustomerData_SlowCookers
                 j++;
 
                 int caseSwitch = rand.Next(27);
-
-                switch (caseSwitch)
-                {
-                    case 1:
-                        resultfirst[i] = 'a';
-                        break;
-                    case 2:
-                        resultfirst[i] = 'b';
-                        break;
-                    case 3:
-                        resultfirst[i] = 'c';
-                        break;
-                    case 4:
-                        resultfirst[i] = 'd';
-                        break;
-                    case 5:
-                        resultfirst[i] = 'e';
-                        break;
-                    case 6:
-                        resultfirst[i] = 'f';
-                        break;
-                    case 7:
-                        resultfirst[i] = 'g';
-                        break;
-                    case 8:
-                        resultfirst[i] = 'h';
-                        break;
-                    case 9:
-                        resultfirst[i] = 'i';
-                        break;
-                    case 10:
-                        resultfirst[i] = 'j';
-                        break;
-                    case 11:
-                        resultfirst[i] = 'k';
-                        break;
-                    case 12:
-                        resultfirst[i] = 'l';
-                        break;
-                    case 13:
-                        resultfirst[i] = 'm';
-                        break;
-                    case 14:
-                        resultfirst[i] = 'n';
-                        break;
-                    case 15:
-                        resultfirst[i] = 'o';
-                        break;
-                    case 16:
-                        resultfirst[i] = 'p';
-                        break;
-                    case 17:
-                        resultfirst[i] = 'q';
-                        break;
-                    case 18:
-                        resultfirst[i] = 'r';
-                        break;
-                    case 19:
-                        resultfirst[i] = 's';
-                        break;
-                    case 21:
-                        resultfirst[i] = 't';
-                        break;
-                    case 22:
-                        resultfirst[i] = 'u';
-                        break;
-                    case 23:
-                        resultfirst[i] = 'v';
-                        break;
-                    case 24:
-                        resultfirst[i] = 'w';
-                        break;
-                    case 25:
-                        resultfirst[i] = 'x';
-                        break;
-                    case 26:
-                        resultfirst[i] = 'y';
-                        break;
-                    case 27:
-                        resultfirst[i] = 'z';
-                        break;
-                    default:
-                        resultfirst[i] = 'A';
-                        break;
-                }
+                resultfirst[i] = Convert.ToChar('a' + caseSwitch - 1);
                 i++;
             }
 
@@ -373,91 +204,7 @@ namespace CustomerData_SlowCookers
                 j++;
 
                 int caseSwitch = rand.Next(27);
-
-                switch (caseSwitch)
-                {
-                    case 1:
-                        resultlast[i] = 'a';
-                        break;
-                    case 2:
-                        resultlast[i] = 'b';
-                        break;
-                    case 3:
-                        resultlast[i] = 'c';
-                        break;
-                    case 4:
-                        resultlast[i] = 'd';
-                        break;
-                    case 5:
-                        resultlast[i] = 'e';
-                        break;
-                    case 6:
-                        resultlast[i] = 'f';
-                        break;
-                    case 7:
-                        resultlast[i] = 'g';
-                        break;
-                    case 8:
-                        resultlast[i] = 'h';
-                        break;
-                    case 9:
-                        resultlast[i] = 'i';
-                        break;
-                    case 10:
-                        resultlast[i] = 'j';
-                        break;
-                    case 11:
-                        resultlast[i] = 'k';
-                        break;
-                    case 12:
-                        resultlast[i] = 'l';
-                        break;
-                    case 13:
-                        resultlast[i] = 'm';
-                        break;
-                    case 14:
-                        resultlast[i] = 'n';
-                        break;
-                    case 15:
-                        resultlast[i] = 'o';
-                        break;
-                    case 16:
-                        resultlast[i] = 'p';
-                        break;
-                    case 17:
-                        resultlast[i] = 'q';
-                        break;
-                    case 18:
-                        resultlast[i] = 'r';
-                        break;
-                    case 19:
-                        resultlast[i] = 's';
-                        break;
-                    case 21:
-                        resultlast[i] = 't';
-                        break;
-                    case 22:
-                        resultlast[i] = 'u';
-                        break;
-                    case 23:
-                        resultlast[i] = 'v';
-                        break;
-                    case 24:
-                        resultlast[i] = 'w';
-                        break;
-                    case 25:
-                        resultlast[i] = 'x';
-                        break;
-                    case 26:
-                        resultlast[i] = 'y';
-                        break;
-                    case 27:
-                        resultlast[i] = 'z';
-                        break;
-                    default:
-                        resultlast[i] = 'A';
-                        break;
-                }
+                resultlast[i] = Convert.ToChar('a' + caseSwitch - 1);
                 i++;
             }
 
@@ -474,91 +221,7 @@ namespace CustomerData_SlowCookers
                 j++;
 
                 int caseSwitch = rand.Next(27);
-
-                switch (caseSwitch)
-                {
-                    case 1:
-                        resultmail[i] = 'a';
-                        break;
-                    case 2:
-                        resultmail[i] = 'b';
-                        break;
-                    case 3:
-                        resultmail[i] = 'c';
-                        break;
-                    case 4:
-                        resultmail[i] = 'd';
-                        break;
-                    case 5:
-                        resultmail[i] = 'e';
-                        break;
-                    case 6:
-                        resultmail[i] = 'f';
-                        break;
-                    case 7:
-                        resultmail[i] = 'g';
-                        break;
-                    case 8:
-                        resultmail[i] = 'h';
-                        break;
-                    case 9:
-                        resultmail[i] = 'i';
-                        break;
-                    case 10:
-                        resultmail[i] = 'j';
-                        break;
-                    case 11:
-                        resultmail[i] = 'k';
-                        break;
-                    case 12:
-                        resultmail[i] = 'l';
-                        break;
-                    case 13:
-                        resultmail[i] = 'm';
-                        break;
-                    case 14:
-                        resultmail[i] = 'n';
-                        break;
-                    case 15:
-                        resultmail[i] = 'o';
-                        break;
-                    case 16:
-                        resultmail[i] = 'p';
-                        break;
-                    case 17:
-                        resultmail[i] = 'q';
-                        break;
-                    case 18:
-                        resultmail[i] = 'r';
-                        break;
-                    case 19:
-                        resultmail[i] = 's';
-                        break;
-                    case 21:
-                        resultmail[i] = 't';
-                        break;
-                    case 22:
-                        resultmail[i] = 'u';
-                        break;
-                    case 23:
-                        resultmail[i] = 'v';
-                        break;
-                    case 24:
-                        resultmail[i] = 'w';
-                        break;
-                    case 25:
-                        resultmail[i] = 'x';
-                        break;
-                    case 26:
-                        resultmail[i] = 'y';
-                        break;
-                    case 27:
-                        resultmail[i] = 'z';
-                        break;
-                    default:
-                        resultmail[i] = 'A';
-                        break;
-                }
+                resultmail[i] = Convert.ToChar('a' + caseSwitch - 1);
                 i++;
             }
 
