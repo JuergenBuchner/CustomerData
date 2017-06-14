@@ -75,7 +75,7 @@ namespace BuchnerTest
             List<int> IDListFilteredactual = new List<int>() { 2, 4 };
 
             // act
-            List<int> IDListFiltered = CustomerData_SlowCookers.Main.CreateFilteredIDList(ListCustomer, stringFilter, filterBy);
+            List<int> IDListFiltered = CustomerData_SlowCookers.formMain.CreateFilteredIDList(ListCustomer, stringFilter, filterBy);
 
             // assert
             Assert.IsTrue(Enumerable.SequenceEqual(IDListFilteredactual, IDListFiltered));
@@ -91,7 +91,7 @@ namespace BuchnerTest
             List<int> IDListFilteredactual = new List<int>() { 3, 4 };
 
             // act
-            List<int> IDListFiltered = CustomerData_SlowCookers.Main.CreateFilteredIDList(ListCustomer, stringFilter, filterBy);
+            List<int> IDListFiltered = CustomerData_SlowCookers.formMain.CreateFilteredIDList(ListCustomer, stringFilter, filterBy);
 
             // assert
             Assert.IsTrue(Enumerable.SequenceEqual(IDListFilteredactual, IDListFiltered));

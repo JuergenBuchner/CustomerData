@@ -1,0 +1,8 @@
+Label;English;Deutsch
+formMain;Customer Data;Kundendaten
+tStripChooseFile;Choose File;Datei auswaehlen
+lblFilter;Filter by;Filtern nach
+btnShowFilteredList;Show List;Liste anzeigen
+btnAddCustomer;Add Customer;Kunden hinzufuegen
+btnEditCustomer;Edit Customer;Kunden bearbeiten
+lblLanguage;Choose Language;Sprache waehlen

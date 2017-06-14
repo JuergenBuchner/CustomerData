@@ -8,18 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections;
 
 namespace CustomerData_SlowCookers
 {
-    public partial class Main : Form
+    public partial class formMain : Form
     {
         List<Customer> listCustomerAll = new List<Customer>();
         List<int> listCustomerFiltered = new List<int>();
         List<int> listCustomerFilteredOld = new List<int>();
         bool[] sortedBoolArray;
-        public Main()
+        public formMain()
         {
             InitializeComponent();
+            // Set Texts in a language
+            
+            StreamReader reader = new StreamReader("../../../languageData.csv");
+            
+            string headerLine = reader.ReadLine();
+            reader.Close();
+            string[] columsEntriesHeader = headerLine.Split(';');
+            for (int i = 1; i < columsEntriesHeader.Length; i++)
+            {
+                cBoxLanguage.Items.Add(columsEntriesHeader[i]);
+            }
+            cBoxLanguage.SelectedIndex = 0; // Selecting the first language in the combo box
+            //ChangeLanguage(cBoxLanguage.SelectedItem.ToString());
+
             cBoxFilterBy.Items.Add("First Name");
             cBoxFilterBy.Items.Add("Last Name");
             cBoxFilterBy.SelectedIndex = 0;
@@ -35,6 +50,39 @@ namespace CustomerData_SlowCookers
             listCustomerFilteredOld = listCustomerFiltered;
             sortedBoolArray = new bool[] { false, false, false, false, false };
             UpdateDataGridView();
+        }
+
+        private void ChangeLanguage(string language)
+        {
+            StreamReader reader = new StreamReader("../../../languageData.csv");
+
+            string headerLine = reader.ReadLine();
+            string[] columsEntriesHeader = headerLine.Split(';'); // Here are the languages names
+            int columnIdx = Array.FindIndex(columsEntriesHeader, s => s.Equals(language));
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                string[] columsEntries = line.Split(';');
+                string prefix = columsEntries[0].Substring(0, 3);
+                if (prefix == "for")
+                {
+                    FindForm().Text = columsEntries[columnIdx];
+                }
+                else if (prefix == "tSt")
+                {                
+                    ToolStrip tStrip = Controls[9] as ToolStrip;
+                    tStrip.Items[columsEntries[0]].Text = columsEntries[columnIdx];
+                }
+                else if (prefix == "cBo")
+                {
+                    // TO DO
+                }
+                else
+                {                    
+                    (Controls[columsEntries[0]] as Control).Text = columsEntries[columnIdx];
+                }
+            }
+            reader.Close();
         }
 
         private void UpdateDataGridView()
@@ -383,6 +431,11 @@ namespace CustomerData_SlowCookers
             }
 
             UpdateDataGridView();
+        }
+
+        private void cBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeLanguage(cBoxLanguage.SelectedItem.ToString());
         }
     }
 }

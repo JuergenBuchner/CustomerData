@@ -1,6 +1,6 @@
 ﻿namespace CustomerData_SlowCookers
 {
-    partial class Main
+    partial class formMain
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dataToolStripMenuItemChooseFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tStripChooseFile = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.btnEditCustomer = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblFilter = new System.Windows.Forms.Label();
             this.txtBxFilterBy = new System.Windows.Forms.TextBox();
             this.cBoxFilterBy = new System.Windows.Forms.ComboBox();
             this.btnShowFilteredList = new System.Windows.Forms.Button();
@@ -45,6 +45,8 @@
             this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cBoxLanguage = new System.Windows.Forms.ComboBox();
+            this.lblLanguage = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGViewFiltered)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
@@ -54,19 +56,19 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dataToolStripMenuItemChooseFile});
+            this.tStripChooseFile});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(786, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // dataToolStripMenuItemChooseFile
+            // tStripChooseFile
             // 
-            this.dataToolStripMenuItemChooseFile.Name = "dataToolStripMenuItemChooseFile";
-            this.dataToolStripMenuItemChooseFile.Size = new System.Drawing.Size(80, 20);
-            this.dataToolStripMenuItemChooseFile.Text = "Choose File";
-            this.dataToolStripMenuItemChooseFile.Click += new System.EventHandler(this.dataToolStripMenuItemChooseFile_Click);
+            this.tStripChooseFile.Name = "tStripChooseFile";
+            this.tStripChooseFile.Size = new System.Drawing.Size(80, 20);
+            this.tStripChooseFile.Text = "Choose File";
+            this.tStripChooseFile.Click += new System.EventHandler(this.dataToolStripMenuItemChooseFile_Click);
             // 
             // btnAddCustomer
             // 
@@ -88,20 +90,20 @@
             this.btnEditCustomer.UseVisualStyleBackColor = true;
             this.btnEditCustomer.Click += new System.EventHandler(this.btnEditCustomer_Click);
             // 
-            // label1
+            // lblFilter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 335);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Filter by:";
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Location = new System.Drawing.Point(9, 335);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(43, 13);
+            this.lblFilter.TabIndex = 3;
+            this.lblFilter.Text = "Filter by";
             // 
             // txtBxFilterBy
             // 
-            this.txtBxFilterBy.Location = new System.Drawing.Point(55, 332);
+            this.txtBxFilterBy.Location = new System.Drawing.Point(71, 332);
             this.txtBxFilterBy.Name = "txtBxFilterBy";
-            this.txtBxFilterBy.Size = new System.Drawing.Size(172, 20);
+            this.txtBxFilterBy.Size = new System.Drawing.Size(156, 20);
             this.txtBxFilterBy.TabIndex = 4;
             // 
             // cBoxFilterBy
@@ -190,23 +192,44 @@
             // 
             this.customerBindingSource.DataSource = typeof(CustomerData_SlowCookers.Customer);
             // 
-            // Main
+            // cBoxLanguage
+            // 
+            this.cBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxLanguage.FormattingEnabled = true;
+            this.cBoxLanguage.Location = new System.Drawing.Point(662, 332);
+            this.cBoxLanguage.Name = "cBoxLanguage";
+            this.cBoxLanguage.Size = new System.Drawing.Size(118, 21);
+            this.cBoxLanguage.TabIndex = 8;
+            this.cBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.cBoxLanguage_SelectedIndexChanged);
+            // 
+            // lblLanguage
+            // 
+            this.lblLanguage.AutoSize = true;
+            this.lblLanguage.Location = new System.Drawing.Point(562, 335);
+            this.lblLanguage.Name = "lblLanguage";
+            this.lblLanguage.Size = new System.Drawing.Size(94, 13);
+            this.lblLanguage.TabIndex = 9;
+            this.lblLanguage.Text = "Choose Language";
+            // 
+            // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 360);
+            this.Controls.Add(this.lblLanguage);
+            this.Controls.Add(this.cBoxLanguage);
             this.Controls.Add(this.dataGViewFiltered);
             this.Controls.Add(this.btnShowFilteredList);
             this.Controls.Add(this.cBoxFilterBy);
             this.Controls.Add(this.txtBxFilterBy);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.btnEditCustomer);
             this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(802, 399);
             this.MinimumSize = new System.Drawing.Size(802, 399);
-            this.Name = "Main";
+            this.Name = "formMain";
             this.Text = "Customer Data";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -221,10 +244,10 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem dataToolStripMenuItemChooseFile;
+        private System.Windows.Forms.ToolStripMenuItem tStripChooseFile;
         private System.Windows.Forms.Button btnAddCustomer;
         private System.Windows.Forms.Button btnEditCustomer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.TextBox txtBxFilterBy;
         private System.Windows.Forms.ComboBox cBoxFilterBy;
         private System.Windows.Forms.Button btnShowFilteredList;
@@ -236,6 +259,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox cBoxLanguage;
+        private System.Windows.Forms.Label lblLanguage;
     }
 }
 
