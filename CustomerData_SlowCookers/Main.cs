@@ -35,8 +35,6 @@ namespace CustomerData_SlowCookers
             cBoxLanguage.SelectedIndex = 0; // Selecting the first language in the combo box
             //ChangeLanguage(cBoxLanguage.SelectedItem.ToString());
 
-            cBoxFilterBy.Items.Add("First Name");
-            cBoxFilterBy.Items.Add("Last Name");
             cBoxFilterBy.SelectedIndex = 0;
             ///////////////////////// CHRISSI : FOR TESTING ////////////////////////////////
             listCustomerAll.Add(new Customer("Jürgen", "Buchner", "juergenBgmail.com", 20));
@@ -52,36 +50,55 @@ namespace CustomerData_SlowCookers
             UpdateDataGridView();
         }
 
-        private void ChangeLanguage(string language)
+        public static void ChangeLanguage(string language, Form form)
         {
+            ControlCollection controls = form.Controls as ControlCollection;
             StreamReader reader = new StreamReader("../../../languageData.csv");
 
             string headerLine = reader.ReadLine();
             string[] columsEntriesHeader = headerLine.Split(';'); // Here are the languages names
             int columnIdx = Array.FindIndex(columsEntriesHeader, s => s.Equals(language));
+            
             while (!reader.EndOfStream)
             {
-                string line = reader.ReadLine();
-                string[] columsEntries = line.Split(';');
-                string prefix = columsEntries[0].Substring(0, 3);
-                if (prefix == "for")
+                try
                 {
-                    FindForm().Text = columsEntries[columnIdx];
+                    string line = reader.ReadLine();
+                    string[] columsEntries = line.Split(';');
+                    string prefix = columsEntries[0].Substring(0, 3);
+                    if (prefix == "for")
+                    {
+                        form.Text = columsEntries[columnIdx];
+                    }
+                    else if (prefix == "tSt")
+                    {
+                        ToolStrip tStrip = controls[9] as ToolStrip;
+                        tStrip.Items[columsEntries[0]].Text = columsEntries[columnIdx];
+                    }
+                    else if (prefix == "cBo")
+                    {
+                        string[] cBoxEntries = columsEntries[columnIdx].Split(',');
+                        (controls[columsEntries[0]] as ComboBox).Items.Clear();
+                        (controls[columsEntries[0]] as ComboBox).Items.AddRange(cBoxEntries);
+                        (controls[columsEntries[0]] as ComboBox).SelectedIndex = 0;
+                    }
+                    else if (prefix == "dgv")
+                    {
+                        string[] dgvEntries = columsEntries[columnIdx].Split(',');
+                        DataGridViewColumnCollection dgvColumns = (controls[columsEntries[0]] as DataGridView).Columns;
+                        for (int i = 0; i < dgvColumns.Count; i++)
+                        {
+                            dgvColumns[i].HeaderText = dgvEntries[i];
+                        }
+                        //(controls[columsEntries[0]] as DataGridView).SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        (controls[columsEntries[0]] as Control).Text = columsEntries[columnIdx];
+                    }
                 }
-                else if (prefix == "tSt")
-                {                
-                    ToolStrip tStrip = Controls[9] as ToolStrip;
-                    tStrip.Items[columsEntries[0]].Text = columsEntries[columnIdx];
-                }
-                else if (prefix == "cBo")
-                {
-                    // TO DO
-                }
-                else
-                {                    
-                    (Controls[columsEntries[0]] as Control).Text = columsEntries[columnIdx];
-                }
-            }
+                catch { }
+            }            
             reader.Close();
         }
 
@@ -286,11 +303,12 @@ namespace CustomerData_SlowCookers
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            FormAdd_Edit form1 = new FormAdd_Edit(listCustomerAll);
+            formAdd_Edit form1 = new formAdd_Edit(listCustomerAll);
+            ChangeLanguage(cBoxLanguage.SelectedItem.ToString(), form1);
             //form1.setAddMoneyReadOnly();
             form1.txtBoxAddMoney.Enabled = false;
 
-            form1.setTitle("Add");
+            form1.setTitle((sender as Button).Text);
             if (form1.ShowDialog() == DialogResult.OK)
             {
                 listCustomerAll.Add(new Customer(form1.getFirstName(), form1.getLastName(), form1.getEMail(), form1.getBalance()));
@@ -331,22 +349,23 @@ namespace CustomerData_SlowCookers
 
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
-            if (dataGViewFiltered.SelectedRows.Count > 0)
+            if (dgvFiltered.SelectedRows.Count > 0)
             {
-                FormAdd_Edit form1 = new FormAdd_Edit(listCustomerAll);
+                formAdd_Edit form1 = new formAdd_Edit(listCustomerAll);
+                ChangeLanguage(cBoxLanguage.SelectedItem.ToString(), form1);
                 //form1.setBalanceReadOnly();
                 form1.txtBoxBalance.Enabled = false;
                 form1.setFirstNameReadOnly();
 
                 // Import Data of selected Customer
-                Customer cust1 = (Customer)dataGViewFiltered.SelectedRows[0].DataBoundItem;
+                Customer cust1 = (Customer)dgvFiltered.SelectedRows[0].DataBoundItem;
                 form1.setID(cust1.ID);
                 form1.setFirstName(cust1.FirstName);
                 form1.setLastName(cust1.LastName);
                 form1.setEMail(cust1.eMail);
                 form1.setBalance(cust1.Balance);
 
-                form1.setTitle("Edit");
+                form1.setTitle((sender as Button).Text);
                 if (form1.ShowDialog() == DialogResult.OK)
                 {
                     cust1.FirstName = form1.getFirstName();
@@ -366,7 +385,7 @@ namespace CustomerData_SlowCookers
 
         private void btnShowFilteredList_Click(object sender, EventArgs e)
         {
-            string filterBy = cBoxFilterBy.Text;
+            int filterBy = cBoxFilterBy.SelectedIndex;
             String stringFilter = txtBxFilterBy.Text;
             listCustomerFiltered = CreateFilteredIDList(listCustomerAll, stringFilter, filterBy);
             // Update Filtered List -> Show
@@ -374,7 +393,7 @@ namespace CustomerData_SlowCookers
             UpdateDataGridView();
         }
 
-        public static List<int> CreateFilteredIDList(List<Customer> list, string stringFilter, string filterBy)
+        public static List<int> CreateFilteredIDList(List<Customer> list, string stringFilter, int filterBy)
         {
 
             List<int> IDListFiltCustomer = new List<int>();
@@ -383,7 +402,7 @@ namespace CustomerData_SlowCookers
             {
                 switch (filterBy)
                 {
-                    case "First Name":
+                    case 0: // the string of the selected item of cBoxFilterby was not chosen because of the different languages
                         foreach (Customer cust1 in list)
                         {
                             if (cust1.FirstName.Contains(stringFilter))
@@ -392,7 +411,7 @@ namespace CustomerData_SlowCookers
                             }
                         }
                         break;
-                    case "Last Name":
+                    case 1:
                         foreach (Customer cust1 in list)
                         {
                             if (cust1.LastName.Contains(stringFilter))
@@ -435,7 +454,7 @@ namespace CustomerData_SlowCookers
 
         private void cBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChangeLanguage(cBoxLanguage.SelectedItem.ToString());
+            ChangeLanguage(cBoxLanguage.SelectedItem.ToString(),FindForm());
         }
     }
 }

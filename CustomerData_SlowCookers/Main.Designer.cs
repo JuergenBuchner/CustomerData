@@ -37,18 +37,18 @@
             this.txtBxFilterBy = new System.Windows.Forms.TextBox();
             this.cBoxFilterBy = new System.Windows.Forms.ComboBox();
             this.btnShowFilteredList = new System.Windows.Forms.Button();
-            this.dataGViewFiltered = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvFiltered = new System.Windows.Forms.DataGridView();
             this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cBoxLanguage = new System.Windows.Forms.ComboBox();
             this.lblLanguage = new System.Windows.Forms.Label();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGViewFiltered)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFiltered)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -125,64 +125,30 @@
             this.btnShowFilteredList.UseVisualStyleBackColor = true;
             this.btnShowFilteredList.Click += new System.EventHandler(this.btnShowFilteredList_Click);
             // 
-            // dataGViewFiltered
+            // dgvFiltered
             // 
-            this.dataGViewFiltered.AllowUserToOrderColumns = true;
-            this.dataGViewFiltered.AllowUserToResizeColumns = false;
-            this.dataGViewFiltered.AllowUserToResizeRows = false;
-            this.dataGViewFiltered.AutoGenerateColumns = false;
-            this.dataGViewFiltered.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGViewFiltered.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvFiltered.AllowUserToOrderColumns = true;
+            this.dgvFiltered.AllowUserToResizeColumns = false;
+            this.dgvFiltered.AllowUserToResizeRows = false;
+            this.dgvFiltered.AutoGenerateColumns = false;
+            this.dgvFiltered.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFiltered.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
-            this.balanceDataGridViewTextBoxColumn,
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn,
-            this.eMailDataGridViewTextBoxColumn});
-            this.dataGViewFiltered.DataSource = this.customerBindingSource1;
-            this.dataGViewFiltered.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGViewFiltered.Location = new System.Drawing.Point(12, 27);
-            this.dataGViewFiltered.MultiSelect = false;
-            this.dataGViewFiltered.Name = "dataGViewFiltered";
-            this.dataGViewFiltered.RowHeadersVisible = false;
-            this.dataGViewFiltered.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGViewFiltered.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGViewFiltered.Size = new System.Drawing.Size(644, 297);
-            this.dataGViewFiltered.TabIndex = 7;
-            this.dataGViewFiltered.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGViewFiltered_ColumnHeaderMouseClick);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // balanceDataGridViewTextBoxColumn
-            // 
-            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
-            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
-            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
-            this.balanceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.balanceDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // eMailDataGridViewTextBoxColumn
-            // 
-            this.eMailDataGridViewTextBoxColumn.DataPropertyName = "eMail";
-            this.eMailDataGridViewTextBoxColumn.HeaderText = "eMail";
-            this.eMailDataGridViewTextBoxColumn.Name = "eMailDataGridViewTextBoxColumn";
-            this.eMailDataGridViewTextBoxColumn.Width = 150;
+            this.eMailDataGridViewTextBoxColumn,
+            this.balanceDataGridViewTextBoxColumn});
+            this.dgvFiltered.DataSource = this.customerBindingSource1;
+            this.dgvFiltered.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvFiltered.Location = new System.Drawing.Point(12, 27);
+            this.dgvFiltered.MultiSelect = false;
+            this.dgvFiltered.Name = "dgvFiltered";
+            this.dgvFiltered.RowHeadersVisible = false;
+            this.dgvFiltered.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvFiltered.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFiltered.Size = new System.Drawing.Size(644, 297);
+            this.dgvFiltered.TabIndex = 7;
+            this.dgvFiltered.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGViewFiltered_ColumnHeaderMouseClick);
             // 
             // customerBindingSource1
             // 
@@ -211,6 +177,40 @@
             this.lblLanguage.TabIndex = 9;
             this.lblLanguage.Text = "Choose Language";
             // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // eMailDataGridViewTextBoxColumn
+            // 
+            this.eMailDataGridViewTextBoxColumn.DataPropertyName = "eMail";
+            this.eMailDataGridViewTextBoxColumn.HeaderText = "eMail";
+            this.eMailDataGridViewTextBoxColumn.Name = "eMailDataGridViewTextBoxColumn";
+            this.eMailDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // balanceDataGridViewTextBoxColumn
+            // 
+            this.balanceDataGridViewTextBoxColumn.DataPropertyName = "Balance";
+            this.balanceDataGridViewTextBoxColumn.HeaderText = "Balance";
+            this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
+            this.balanceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.balanceDataGridViewTextBoxColumn.Width = 150;
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,7 +218,7 @@
             this.ClientSize = new System.Drawing.Size(786, 360);
             this.Controls.Add(this.lblLanguage);
             this.Controls.Add(this.cBoxLanguage);
-            this.Controls.Add(this.dataGViewFiltered);
+            this.Controls.Add(this.dgvFiltered);
             this.Controls.Add(this.btnShowFilteredList);
             this.Controls.Add(this.cBoxFilterBy);
             this.Controls.Add(this.txtBxFilterBy);
@@ -233,7 +233,7 @@
             this.Text = "Customer Data";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGViewFiltered)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFiltered)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -251,16 +251,16 @@
         private System.Windows.Forms.TextBox txtBxFilterBy;
         private System.Windows.Forms.ComboBox cBoxFilterBy;
         private System.Windows.Forms.Button btnShowFilteredList;
-        private System.Windows.Forms.DataGridView dataGViewFiltered;
+        private System.Windows.Forms.DataGridView dgvFiltered;
         private System.Windows.Forms.BindingSource customerBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource customerBindingSource1;
+        private System.Windows.Forms.ComboBox cBoxLanguage;
+        private System.Windows.Forms.Label lblLanguage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ComboBox cBoxLanguage;
-        private System.Windows.Forms.Label lblLanguage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
     }
 }
 

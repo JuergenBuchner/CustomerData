@@ -1,8 +1,16 @@
-Label;English;Deutsch
+﻿Label;English;Deutsch
 formMain;Customer Data;Kundendaten
-tStripChooseFile;Choose File;Datei auswaehlen
+tStripChooseFile;Choose File;Datei auswählen
 lblFilter;Filter by;Filtern nach
 btnShowFilteredList;Show List;Liste anzeigen
-btnAddCustomer;Add Customer;Kunden hinzufuegen
+btnAddCustomer;Add Customer;Kunden hinzufügen
 btnEditCustomer;Edit Customer;Kunden bearbeiten
-lblLanguage;Choose Language;Sprache waehlen
+lblLanguage;Choose Language;Sprache wählen
+cBoxFilterBy;First Name,Last Name;Vorname, Nachname
+lblID;ID;Seriennummer
+lblFirstName;First Name;Vorname
+lblLastName;Last Name;Nachname
+lblEmail; Email;Email
+lblBalance; Balance;Kontostand
+lblAddMoney;Add Money;Geld hinzufügen
+dgvFiltered;ID,First Name,Last Name,Email,Balance,AddMoney;Seriennummer,Vorname,Nachname,Email,Kontostand,Geld hinzufügen

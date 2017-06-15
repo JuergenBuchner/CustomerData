@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace CustomerData_SlowCookers
 {
-    public partial class FormAdd_Edit : Form
+    public partial class formAdd_Edit : Form
     {
         private List<Customer> listCustomerAll;
 
-        public FormAdd_Edit(List<Customer> list)
+        public formAdd_Edit(List<Customer> list)
         {
             InitializeComponent();
             listCustomerAll = list;

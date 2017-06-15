@@ -27,7 +27,7 @@ namespace BuchnerTest
         {
             //arrange
             string[] validNames = { "Jürgen", "Alex", "Bo"};
-            FormAdd_Edit formAE = new FormAdd_Edit(ListCustomer);
+            formAdd_Edit formAE = new formAdd_Edit(ListCustomer);
             bool namesOK = true;
 
             //act
@@ -49,7 +49,7 @@ namespace BuchnerTest
         {
             //arrange
             string[] inValidnames = { "jürgen", "a", "al", "Jürg3n", "§lex", "JÜRGEN", "jÜRGEN"," ","" };
-            FormAdd_Edit formAE = new FormAdd_Edit(ListCustomer);
+            formAdd_Edit formAE = new formAdd_Edit(ListCustomer);
             bool namesOK = false;
 
             //act
