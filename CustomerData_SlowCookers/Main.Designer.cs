@@ -112,14 +112,14 @@
             this.cBoxFilterBy.FormattingEnabled = true;
             this.cBoxFilterBy.Location = new System.Drawing.Point(233, 332);
             this.cBoxFilterBy.Name = "cBoxFilterBy";
-            this.cBoxFilterBy.Size = new System.Drawing.Size(78, 21);
+            this.cBoxFilterBy.Size = new System.Drawing.Size(94, 21);
             this.cBoxFilterBy.TabIndex = 5;
             // 
             // btnShowFilteredList
             // 
-            this.btnShowFilteredList.Location = new System.Drawing.Point(317, 330);
+            this.btnShowFilteredList.Location = new System.Drawing.Point(333, 330);
             this.btnShowFilteredList.Name = "btnShowFilteredList";
-            this.btnShowFilteredList.Size = new System.Drawing.Size(116, 23);
+            this.btnShowFilteredList.Size = new System.Drawing.Size(100, 23);
             this.btnShowFilteredList.TabIndex = 6;
             this.btnShowFilteredList.Text = "Show List";
             this.btnShowFilteredList.UseVisualStyleBackColor = true;
