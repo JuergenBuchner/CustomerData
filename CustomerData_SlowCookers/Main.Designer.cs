@@ -38,15 +38,15 @@
             this.cBoxFilterBy = new System.Windows.Forms.ComboBox();
             this.btnShowFilteredList = new System.Windows.Forms.Button();
             this.dgvFiltered = new System.Windows.Forms.DataGridView();
-            this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cBoxLanguage = new System.Windows.Forms.ComboBox();
-            this.lblLanguage = new System.Windows.Forms.Label();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cBoxLanguage = new System.Windows.Forms.ComboBox();
+            this.lblLanguage = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiltered)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource1)).BeginInit();
@@ -150,33 +150,6 @@
             this.dgvFiltered.TabIndex = 7;
             this.dgvFiltered.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGViewFiltered_ColumnHeaderMouseClick);
             // 
-            // customerBindingSource1
-            // 
-            this.customerBindingSource1.DataSource = typeof(CustomerData_SlowCookers.Customer);
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(CustomerData_SlowCookers.Customer);
-            // 
-            // cBoxLanguage
-            // 
-            this.cBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBoxLanguage.FormattingEnabled = true;
-            this.cBoxLanguage.Location = new System.Drawing.Point(662, 332);
-            this.cBoxLanguage.Name = "cBoxLanguage";
-            this.cBoxLanguage.Size = new System.Drawing.Size(118, 21);
-            this.cBoxLanguage.TabIndex = 8;
-            this.cBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.cBoxLanguage_SelectedIndexChanged);
-            // 
-            // lblLanguage
-            // 
-            this.lblLanguage.AutoSize = true;
-            this.lblLanguage.Location = new System.Drawing.Point(562, 335);
-            this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(94, 13);
-            this.lblLanguage.TabIndex = 9;
-            this.lblLanguage.Text = "Choose Language";
-            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -210,6 +183,33 @@
             this.balanceDataGridViewTextBoxColumn.Name = "balanceDataGridViewTextBoxColumn";
             this.balanceDataGridViewTextBoxColumn.ReadOnly = true;
             this.balanceDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // customerBindingSource1
+            // 
+            this.customerBindingSource1.DataSource = typeof(CustomerData_SlowCookers.Customer);
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(CustomerData_SlowCookers.Customer);
+            // 
+            // cBoxLanguage
+            // 
+            this.cBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cBoxLanguage.FormattingEnabled = true;
+            this.cBoxLanguage.Location = new System.Drawing.Point(662, 332);
+            this.cBoxLanguage.Name = "cBoxLanguage";
+            this.cBoxLanguage.Size = new System.Drawing.Size(118, 21);
+            this.cBoxLanguage.TabIndex = 8;
+            this.cBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.cBoxLanguage_SelectedIndexChanged);
+            // 
+            // lblLanguage
+            // 
+            this.lblLanguage.AutoSize = true;
+            this.lblLanguage.Location = new System.Drawing.Point(562, 335);
+            this.lblLanguage.Name = "lblLanguage";
+            this.lblLanguage.Size = new System.Drawing.Size(94, 13);
+            this.lblLanguage.TabIndex = 9;
+            this.lblLanguage.Text = "Choose Language";
             // 
             // formMain
             // 
@@ -254,13 +254,13 @@
         private System.Windows.Forms.DataGridView dgvFiltered;
         private System.Windows.Forms.BindingSource customerBindingSource;
         private System.Windows.Forms.BindingSource customerBindingSource1;
-        private System.Windows.Forms.ComboBox cBoxLanguage;
         private System.Windows.Forms.Label lblLanguage;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn balanceDataGridViewTextBoxColumn;
+        public System.Windows.Forms.ComboBox cBoxLanguage;
     }
 }
 

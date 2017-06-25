@@ -84,7 +84,7 @@ namespace CustomerData_SlowCookers
                 return true;
             }
         }
-        private bool eMailOK(String email)
+        public bool eMailOK(String email)
         {
             string pattern = @"[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+@{1}[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+[\.]?[a-zA-Z0-9!#$%\&'\*\+\-\/=\?\^_`\{|\}~]+[\.]{1}[a-z,A-Z]{2,4}";
 
@@ -99,7 +99,7 @@ namespace CustomerData_SlowCookers
 
         }
 
-        private bool checkEmailUnique(List<Customer> liste, String email, int row)
+        public bool checkEmailUnique(List<Customer> liste, String email, int row)
         {
             int count = 0;
             foreach (var l in liste)

@@ -159,7 +159,7 @@ namespace CustomerData_SlowCookers
             }
         }
 
-        private void decriptData(String id, String balance, String firstName, String lastName, String email)
+        public void decriptData(String id, String balance, String firstName, String lastName, String email)
         {
 
             var chars = balance.ToCharArray();
@@ -218,7 +218,7 @@ namespace CustomerData_SlowCookers
             UpdateDataGridView();
         }
 
-        private string encriptData(String id, String balance, String firstName, String lastName, String email)
+        public string encriptData(String id, String balance, String firstName, String lastName, String email)
         {
 
             var bal = balance.ToCharArray();
@@ -237,6 +237,7 @@ namespace CustomerData_SlowCookers
 
                 int caseSwitch = rand.Next(27);
                 resultbal[i] = Convert.ToChar('a' + caseSwitch - 1);
+                i++;
             }
 
             var first = firstName.ToCharArray();
@@ -452,7 +453,7 @@ namespace CustomerData_SlowCookers
             UpdateDataGridView();
         }
 
-        private void cBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        public void cBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeLanguage(cBoxLanguage.SelectedItem.ToString(),FindForm());
         }
