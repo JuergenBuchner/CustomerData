@@ -36,10 +36,10 @@ namespace CustomerData_SlowCookers
             //ChangeLanguage(cBoxLanguage.SelectedItem.ToString());
 
             cBoxFilterBy.SelectedIndex = 0;
-            ///////////////////////// CHRISSI : FOR TESTING ////////////////////////////////
-            listCustomerAll.Add(new Customer("Jürgen", "Buchner", "juergenBgmail.com", 20));
-            listCustomerAll.Add(new Customer("bernd", "Harrer", "zorro@gmail.com", 50));
-            listCustomerAll.Add(new Customer("Arnold", "Mair", "M.Arnold@gmail.com", 30));
+            /////////////////////////////// FOR TESTING /////////////////////////////////////
+            //listCustomerAll.Add(new Customer("Jürgen", "Buchner", "juergenBgmail.com", 20));
+            //listCustomerAll.Add(new Customer("bernd", "Harrer", "zorro@gmail.com", 50));
+            //listCustomerAll.Add(new Customer("Arnold", "Mair", "M.Arnold@gmail.com", 30));
             /////////////////////////////////////////////////////////////////////////////////
             foreach (Customer cust1 in listCustomerAll)
             {
@@ -393,7 +393,10 @@ namespace CustomerData_SlowCookers
             // If txtBxFilterBy.Text is null -> Show All entries of the list
             UpdateDataGridView();
         }
-
+        ///<summary>
+        /// filterBy = 0: Filters by the first name. 
+        /// filterBy = 1: Filters by the last name
+        ///</summary>
         public static List<int> CreateFilteredIDList(List<Customer> list, string stringFilter, int filterBy)
         {
 
