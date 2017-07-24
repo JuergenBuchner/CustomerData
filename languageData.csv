@@ -14,3 +14,4 @@ lblEmail; Email;Email;Email
 lblBalance; Balance;Kontostand;saldo bancario
 lblAddMoney;Add Money;Geld hinzufügen;Agrega dinero
 dgvFiltered;ID,First Name,Last Name,Email,Balance,AddMoney;Seriennummer,Vorname,Nachname,Email,Kontostand,Geld hinzufügen;número de serie,primer nombre,apellido,Email,saldo bancario,Agrega dinero
+btnCancel;Cancel;Abbrechen;Abortar

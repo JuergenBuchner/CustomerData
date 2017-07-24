@@ -47,7 +47,7 @@ namespace CustomerData_SlowCookers
             }
             listCustomerFilteredOld = listCustomerFiltered;
             sortedBoolArray = new bool[] { false, false, false, false, false };
-            UpdateDataGridView();
+            UpdateDataGridView(cBoxFilterBy.SelectedIndex, txtBxFilterBy.Text);
         }
 
         public static void ChangeLanguage(string language, Form form)
@@ -102,8 +102,9 @@ namespace CustomerData_SlowCookers
             reader.Close();
         }
 
-        private void UpdateDataGridView()
+        private void UpdateDataGridView(int filterBy, String stringFilter)
         {
+            listCustomerFiltered = CreateFilteredIDList(listCustomerAll, stringFilter, filterBy);
             customerBindingSource1.Clear();
             foreach ( Customer item in listCustomerAll)
             {
@@ -215,7 +216,7 @@ namespace CustomerData_SlowCookers
             Console.WriteLine(result3);
 
             listCustomerAll.Add(new Customer(result1.ToString(), result2.ToString(), result3.ToString(), res));
-            UpdateDataGridView();
+            UpdateDataGridView(cBoxFilterBy.SelectedIndex, txtBxFilterBy.Text);
         }
 
         public string encriptData(String id, String balance, String firstName, String lastName, String email)
@@ -306,15 +307,14 @@ namespace CustomerData_SlowCookers
         {
             formAdd_Edit form1 = new formAdd_Edit(listCustomerAll);
             ChangeLanguage(cBoxLanguage.SelectedItem.ToString(), form1);
-            //form1.setAddMoneyReadOnly();
             form1.txtBoxAddMoney.Enabled = false;
 
             form1.setTitle((sender as Button).Text);
             if (form1.ShowDialog() == DialogResult.OK)
             {
-                listCustomerAll.Add(new Customer(form1.getFirstName(), form1.getLastName(), form1.getEMail(), form1.getBalance()));
-                UpdateDataGridView();
+                listCustomerAll.Add(form1.customer1);
                 writeCSV(listCustomerAll);
+                UpdateDataGridView(cBoxFilterBy.SelectedIndex, txtBxFilterBy.Text);
             }
         }
 
@@ -373,7 +373,7 @@ namespace CustomerData_SlowCookers
                     cust1.LastName = form1.getLastName();
                     cust1.eMail = form1.getEMail();
                     cust1.addMoney(form1.getAddMoney());
-                    UpdateDataGridView();
+                    UpdateDataGridView(cBoxFilterBy.SelectedIndex, txtBxFilterBy.Text);
                     writeCSV(listCustomerAll);
                 }
                 
@@ -385,13 +385,8 @@ namespace CustomerData_SlowCookers
         }
 
         private void btnShowFilteredList_Click(object sender, EventArgs e)
-        {
-            int filterBy = cBoxFilterBy.SelectedIndex;
-            String stringFilter = txtBxFilterBy.Text;
-            listCustomerFiltered = CreateFilteredIDList(listCustomerAll, stringFilter, filterBy);
-            // Update Filtered List -> Show
-            // If txtBxFilterBy.Text is null -> Show All entries of the list
-            UpdateDataGridView();
+        {          
+            UpdateDataGridView(cBoxFilterBy.SelectedIndex, txtBxFilterBy.Text);
         }
         ///<summary>
         /// filterBy = 0: Filters by the first name. 
@@ -453,7 +448,7 @@ namespace CustomerData_SlowCookers
                 sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is not sorted ascending in any way (in this case sorted descending by ID)
             }
 
-            UpdateDataGridView();
+            UpdateDataGridView(cBoxFilterBy.SelectedIndex, txtBxFilterBy.Text);
         }
 
         public void cBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)

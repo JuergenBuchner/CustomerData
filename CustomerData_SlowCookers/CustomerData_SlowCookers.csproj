@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
+    <Compile Include="customerList.cs" />
     <Compile Include="FormAdd_Edit.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -68,7 +68,7 @@ namespace CustomerDataTest
 
             foreach(string email in validEmail)
             {
-                if (!form.eMailOK(email))
+                if (!Customer.eMailOK(email))
                 {
                     emailOK = false;
                     break;
@@ -86,7 +86,7 @@ namespace CustomerDataTest
 
             foreach(string email in invalidEmail)
             {
-                if (form.eMailOK(email))
+                if (Customer.eMailOK(email))
                 {
                     emailOk = true;
                     break;

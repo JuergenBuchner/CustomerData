@@ -27,13 +27,12 @@ namespace BuchnerTest
         {
             //arrange
             string[] validNames = { "Jürgen", "Alex", "Bo"};
-            formAdd_Edit formAE = new formAdd_Edit(ListCustomer);
             bool namesOK = true;
 
             //act
             foreach (string name in validNames)
             {
-                if (!formAE.checkName(name))
+                if (!Customer.checkName(name))
                 {
                     namesOK = false;
                     break;
@@ -49,13 +48,12 @@ namespace BuchnerTest
         {
             //arrange
             string[] inValidnames = { "jürgen", "a", "al", "Jürg3n", "§lex", "JÜRGEN", "jÜRGEN"," ","" };
-            formAdd_Edit formAE = new formAdd_Edit(ListCustomer);
             bool namesOK = false;
 
             //act
             foreach (string name in inValidnames)
             {
-                if (formAE.checkName(name))
+                if (Customer.checkName(name))
                 {
                     namesOK = true;
                     break;
@@ -86,7 +84,6 @@ namespace BuchnerTest
         {
             // arrange
             string stringFilter = "Ma";
-            string filterBy = "Last Name";
             List<int> IDListFilteredactual = new List<int>() { 3, 4 };
 
             // act
