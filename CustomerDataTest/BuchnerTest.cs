@@ -9,13 +9,12 @@ namespace BuchnerTest
     [TestClass]
     public class BuchnerTest
     {
-        private List<Customer> ListCustomer;
+        private CustomerList ListCustomer;
 
         [TestInitialize()]
         public void Initialize()
         {
-            Customer.idCount = 1;
-            ListCustomer = new List<Customer>();
+            ListCustomer = new CustomerList();
             ListCustomer.Add(new Customer("Jürgen", "Buchner", "juergenB@gmail.com", 20));
             ListCustomer.Add(new Customer("Bernd", "Harrer", "zorro@gmail.com", 50));
             ListCustomer.Add(new Customer("Arnold", "Mair", "M.Arnold@gmail.com", 30));

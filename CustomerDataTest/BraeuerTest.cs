@@ -16,7 +16,6 @@ namespace CustomerDataTest
         [TestInitialize()]
         public void Initialize()
         {
-            Customer.idCount = 1;
             ListCustomer = new List<Customer>();
             ListCustomer.Add(new Customer("Jürgen", "Buchner", "juergenB@gmail.com", 20));
             ListCustomer.Add(new Customer("Bernd", "Harrer", "zorro@gmail.com", 50));

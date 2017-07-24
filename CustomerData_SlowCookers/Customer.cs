@@ -9,12 +9,10 @@ namespace CustomerData_SlowCookers
 {
     public class Customer
     {
-        public static int idCount = 1;
         #region Constructor
         public Customer(string firstName, string lastName, string email, decimal balance)
         {
-            this.ID = idCount;
-            idCount++;
+            ID = 0;
             this.FirstName = firstName;
             LastName = lastName;
             eMail = email;
@@ -22,7 +20,7 @@ namespace CustomerData_SlowCookers
         }
         #endregion Constructor
         #region Membervariables
-        private int id;
+        public int id;
         private string firstName;
         private string lastName;
         private string email;
@@ -36,7 +34,7 @@ namespace CustomerData_SlowCookers
             {
                 return this.id;
             }
-            private set
+            set
             {
                 this.id = value;
             }

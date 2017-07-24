@@ -14,7 +14,7 @@ namespace CustomerData_SlowCookers
 {
     public partial class formMain : Form
     {
-        List<Customer> listCustomerAll = new List<Customer>();
+        CustomerList listCustomerAll = new CustomerList();
         List<int> listCustomerFiltered = new List<int>();
         List<int> listCustomerFilteredOld = new List<int>();
         bool[] sortedBoolArray;
@@ -37,9 +37,10 @@ namespace CustomerData_SlowCookers
 
             cBoxFilterBy.SelectedIndex = 0;
             /////////////////////////////// FOR TESTING /////////////////////////////////////
-            //listCustomerAll.Add(new Customer("Jürgen", "Buchner", "juergenBgmail.com", 20));
-            //listCustomerAll.Add(new Customer("bernd", "Harrer", "zorro@gmail.com", 50));
-            //listCustomerAll.Add(new Customer("Arnold", "Mair", "M.Arnold@gmail.com", 30));
+            listCustomerAll.Add(new Customer("Jürgen", "Buchner", "juergenB@gmail.com", 20));
+            listCustomerAll.Add(new Customer("Jürgen", "Buch", "juergenB@ail.com", 20));
+            listCustomerAll.Add(new Customer("Bernd", "Harrer", "zorro@gmail.com", 50));
+            listCustomerAll.Add(new Customer("Arnold", "Mair", "M.Arnold@gmail.com", 30));
             /////////////////////////////////////////////////////////////////////////////////
             foreach (Customer cust1 in listCustomerAll)
             {
@@ -90,7 +91,6 @@ namespace CustomerData_SlowCookers
                         {
                             dgvColumns[i].HeaderText = dgvEntries[i];
                         }
-                        //(controls[columsEntries[0]] as DataGridView).SelectedIndex = 0;
                     }
                     else
                     {
@@ -434,17 +434,17 @@ namespace CustomerData_SlowCookers
 
         private void dataGViewFiltered_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string[] customerProperties = new string[] { "ID", "Balance", "FirstName", "LastName", "eMail" };
+            string[] customerProperties = new string[] { "ID", "FirstName", "LastName", "eMail", "Balance" };
 
             if (sortedBoolArray[e.ColumnIndex] == false) // If list is already sorted ascending by ID, the list will be sorted descending 
             {
-                listCustomerAll = listCustomerAll.OrderBy(o => typeof(Customer).GetProperty(customerProperties[e.ColumnIndex]).GetValue(o, null)).ToList(); // Sorting the list ascending by ID
+                listCustomerAll.ReplaceByIndexedList(listCustomerAll.OrderBy(o => typeof(Customer).GetProperty(customerProperties[e.ColumnIndex]).GetValue(o, null)).ToList()); // Sorting the list ascending by ID
                 sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is sorted ascending by ID
                 sortedBoolArray[e.ColumnIndex] = true;
             }
             else
             {
-                listCustomerAll = listCustomerAll.OrderByDescending(o => typeof(Customer).GetProperty(customerProperties[e.ColumnIndex]).GetValue(o, null)).ToList(); // Sorting the list descending by ID
+                listCustomerAll.ReplaceByIndexedList(listCustomerAll.OrderByDescending(o => typeof(Customer).GetProperty(customerProperties[e.ColumnIndex]).GetValue(o, null)).ToList()); // Sorting the list descending by ID
                 sortedBoolArray = new bool[] { false, false, false, false, false }; // setting that the list is not sorted ascending in any way (in this case sorted descending by ID)
             }
 
@@ -454,6 +454,11 @@ namespace CustomerData_SlowCookers
         public void cBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeLanguage(cBoxLanguage.SelectedItem.ToString(),FindForm());
+        }
+
+        private void dgvFiltered_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
