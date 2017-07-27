@@ -18,6 +18,9 @@ namespace CustomerData_SlowCookers
         List<int> listCustomerFiltered = new List<int>();
         List<int> listCustomerFilteredOld = new List<int>();
         bool[] sortedBoolArray;
+        Stream saveStream = null;
+        String dateipath = "";
+        bool savetoother = false;
         public formMain()
         {
             InitializeComponent();
@@ -133,7 +136,7 @@ namespace CustomerData_SlowCookers
                         {
                             StreamReader sr = new StreamReader(myStream);
                             string line;
-                            //erste Zeile wird nicht benötigt, es handelt sich hier um die Tabellenüberschriften
+                            //first line not necessary, it is the heading of the table
                             line = sr.ReadLine();
 
                             while ((line = sr.ReadLine()) != null)
@@ -162,60 +165,119 @@ namespace CustomerData_SlowCookers
 
         public void decriptData(String id, String balance, String firstName, String lastName, String email)
         {
-
-            var chars = balance.ToCharArray();
-            Char[] result = new char[((balance.Length) / 2) + 1];
             int i = 0;
             int j = 0;
-            while (j != (balance.Length))
+            Char[] result = new char[((balance.Length) / 2) + 1];
+            //if amount of chars of balance is even
+            if ((balance.Length % 2) == 0)
             {
-                result[i] = balance[j];
-                i++;
-                j += 2;
+                while (j != (balance.Length))
+                {
+                    result[i] = balance[j];
+                    i++;
+                    j += 2;
+                }
+            } else //if amount of chars of balance is odd
+            {
+                while (j != (balance.Length + 1)) //otherwise you get an exception
+                {
+                    result[i] = balance[j];
+                    i++;
+                    j += 2;
+                }
             }
-            Console.WriteLine(result);
+
+            //Console.WriteLine(result); //only for CHECK 
 
             int res = 0;
             bool resu = Int32.TryParse(result.ToString(), out res);
+            //Console.WriteLine(res); //check if word is decripted correctly
 
-
-            var chars1 = firstName.ToCharArray();
+            i = 0;
+            j = 0;
             Char[] result1 = new char[((firstName.Length) / 2) + 1];
+            //if amount of chars of firstname is even
+            if ((firstName.Length % 2) == 0)
+            {
+                while (j != (firstName.Length))
+                {
+                    result1[i] = firstName[j];
+                    i++;
+                    j += 2;
+                }
+            }
+            else   //if amount of chars of firstname is odd
+            {
+                while(j != (firstName.Length)+1)
+                {
+                    result1[i] = firstName[j];
+                    i++;
+                    j += 2;
+                }
+            }
+                        
+            //Console.WriteLine(result1); //check if word is decripted correctly
+
             i = 0;
             j = 0;
-            while (j != (firstName.Length))
-            {
-                result1[i] = firstName[j];
-                i++;
-                j += 2;
-            }
-            Console.WriteLine(result1);
-
-            var chars2 = lastName.ToCharArray();
             Char[] result2 = new char[((lastName.Length) / 2) + 1];
+            //if amount of chars of lastName is even
+            if ((lastName.Length % 2) == 0)
+            {
+                while (j != (lastName.Length))
+                {
+                    result2[i] = lastName[j];
+                    i++;
+                    j += 2;
+                }
+            } else //if amount of chars is odd
+            {
+                while (j != (lastName.Length)+1)
+                {
+                    result2[i] = lastName[j];
+                    i++;
+                    j += 2;
+                }
+            }
+
+            //Console.WriteLine(result2); //check if word is decripted correctly
+            
             i = 0;
             j = 0;
-            while (j != (lastName.Length))
-            {
-                result2[i] = lastName[j];
-                i++;
-                j += 2;
-            }
-            Console.WriteLine(result2);
-
-            var chars3 = email.ToCharArray();
             Char[] result3 = new char[((email.Length) / 2) + 1];
-            i = 0;
-            j = 0;
-            while (j != (email.Length))
+            //if amount  of chars of email is even
+            if ((email.Length % 2) == 0)
             {
-                result3[i] = email[j];
-                i++;
-                j += 2;
+                while (j != (email.Length))
+                {
+                    result3[i] = email[j];
+                    i++;
+                    j += 2;
+                }
+            } else //if amount of chars is odd
+            {
+                while (j != (email.Length)+1)
+                {
+                    result3[i] = email[j];
+                    i++;
+                    j += 2;
+                }
             }
-            Console.WriteLine(result3);
+            
+            //Console.WriteLine(result3); //check if word is decripted correctly
 
-            listCustomerAll.Add(new Customer(result1.ToString(), result2.ToString(), result3.ToString(), res));
+            //formAdd_Edit form1 = new formAdd_Edit(listCustomerAll);
+            //if check is wrong, data set isn't shown in the list
+            //result1.length-1 because otherwise you check also the \0 (end of char[]) 
+            if (Customer.checkName(new String(result1, 0, result1.Length - 1)) && Customer.checkName(new string(result2, 0, result2.Length - 1)) && Customer.eMailOK(new string(result3, 0, result3.Length - 1)))
+            {
+                //Console.WriteLine("First name right");
+                listCustomerAll.Add(new Customer(new string(result1), new string(result2), new string(result3), new decimal(res)));
+                foreach (Customer cust1 in listCustomerAll)
+                {
+                    listCustomerFiltered.Add(cust1.ID);
+                }
+            }
             UpdateDataGridView(cBoxFilterBy.SelectedIndex, txtBxFilterBy.Text);
         }
 
@@ -320,31 +382,120 @@ namespace CustomerData_SlowCookers
 
 
         private bool writeCSV(List<Customer> ListWriteAll)
-        {
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.Filter = "|*.csv";
-            saveFile.Title = "Save CSV File";
-            saveFile.ShowDialog();
-
-            // If the file name is not an empty string open it for saving.
-            if (saveFile.FileName != "")
+        {           
+            try
             {
-                using (StreamWriter sw = new StreamWriter(saveFile.FileName))
+                if (saveStream.Equals(""))
                 {
-                    sw.WriteLine("ID;Balance;FirstName;LastName;Email");
-                    foreach (var l in ListWriteAll)
-                    {
-                        String res = encriptData(l.ID.ToString(), l.Balance.ToString(), l.FirstName, l.LastName, l.eMail);
-                        Console.WriteLine(res);
-                        sw.WriteLine(res);
-                    }
-                    sw.Close();
-                }
-                return true;
-            }
+                    //exception is thrown
+                } else if (savetoother.Equals(true))   //wenn save button gedrückt wird
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "CSV files (*.csv)|*.csv";
+                    saveFileDialog.FilterIndex = 2;
+                    saveFileDialog.RestoreDirectory = true;
 
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            if ((saveStream = saveFileDialog.OpenFile()) != null)
+                            {
+                                dateipath = saveFileDialog.FileName;
+                                Console.WriteLine(dateipath);
+                                using (StreamWriter sw = new StreamWriter(saveStream))
+                                {
+                                    sw.WriteLine("ID;Balance;FirstName;LastName;Email");
+
+                                    formAdd_Edit form1 = new formAdd_Edit(listCustomerAll);
+
+                                    foreach (var l in listCustomerAll)
+                                    {
+                                        String res = encriptData(l.ID.ToString(), l.Balance.ToString(), l.FirstName, l.LastName, l.eMail);
+                                        Console.WriteLine(res);
+                                        sw.WriteLine(res);
+                                    }
+                                    sw.Close();
+                                }
+
+                                return true;
+                            }
+                            return false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: Could not write to file from disk. Original error: " + ex.Message);
+                        }
+                    }
+                    
+                }
+
+                else
+                {
+                    
+                    using (StreamWriter sw = new StreamWriter(dateipath ,false))
+                    {
+                        sw.WriteLine("ID;Balance;FirstName;LastName;Email");
+
+                        formAdd_Edit form1 = new formAdd_Edit(listCustomerAll);
+
+                        foreach (var l in listCustomerAll)
+                        {
+                            String res = encriptData(l.ID.ToString(), l.Balance.ToString(), l.FirstName, l.LastName, l.eMail);
+                            Console.WriteLine(res);
+                        sw.WriteLine(res);
+
+                        }
+                    sw.Close();
+                    }
+                    saveStream.Close();
+                    return true;
+                }
+            }
+            
+            catch (Exception e)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "CSV files (*.csv)|*.csv";
+                saveFileDialog.FilterIndex = 2;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        if ((saveStream = saveFileDialog.OpenFile()) != null)
+                        {
+                            dateipath = saveFileDialog.FileName;
+                            Console.WriteLine(dateipath);
+                            using (StreamWriter sw = new StreamWriter(saveStream))
+                            {
+                                sw.WriteLine("ID;Balance;FirstName;LastName;Email");
+
+                                formAdd_Edit form1 = new formAdd_Edit(listCustomerAll);
+
+                                foreach (var l in listCustomerAll)
+                                {
+                                    String res = encriptData(l.ID.ToString(), l.Balance.ToString(), l.FirstName, l.LastName, l.eMail);
+                                    Console.WriteLine(res);
+                                    sw.WriteLine(res);
+                                }
+                                sw.Close();
+                            }
+                            
+                            return true;
+                        }
+                        return false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: Could not write to file from disk. Original error: " + ex.Message);
+                    }
+                }
+            } 
             return false;
         }
+
 
 
 
@@ -459,6 +610,13 @@ namespace CustomerData_SlowCookers
         private void dgvFiltered_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void tStripSaveFile_Click(object sender, EventArgs e)
+        {
+            savetoother = true;
+            writeCSV(listCustomerAll);
+            savetoother = false; 
         }
     }
 }
